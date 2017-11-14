@@ -23,8 +23,8 @@ or
 docker-compose build
 docker-compose up -d
 docker run --rm --interactive --tty --network 2017phpworlddddworkshop_default mariadb mysql -hmariadb -uroot -p64ounces --batch -e "drop database if exists beeriously; create database beeriously;"
-docker run --rm --interactive --tty --network 2017phpworlddddworkshop_default --volume `pwd`:/app --user $(id -u):$(id -g) --workdir /app beeriously_php-fpm composer install
-docker run --rm --interactive --tty --network 2017phpworlddddworkshop_default --volume `pwd`:/app --user $(id -u):$(id -g) --workdir /app beeriously_php-fpm /app/bin/console doctrine:migrations:migrate --no-interaction -v
+docker run --rm --interactive --tty --network 2017phpworlddddworkshop_default --volume `pwd`:/app --user $(id -u):$(id -g) --workdir /app 2017phpworlddddworkshop_php-fpm composer install
+docker run --rm --interactive --tty --network 2017phpworlddddworkshop_default --volume `pwd`:/app --user $(id -u):$(id -g) --workdir /app 2017phpworlddddworkshop_php-fpm /app/bin/console doctrine:migrations:migrate --no-interaction -v
 ````
 
 If you can then run and only see testing errors then you are good to go:

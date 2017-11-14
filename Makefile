@@ -1,6 +1,6 @@
 default: beer
 
-RUN_COMMAND_ON_PHP = docker run --rm --interactive --tty --network 2017phpworlddddworkshop_default --volume `pwd`:/app --user $(id -u):$(id -g) --workdir /app beeriously_php-fpm
+RUN_COMMAND_ON_PHP = docker run --rm --interactive --tty --network 2017phpworlddddworkshop_default --volume `pwd`:/app --user $(id -u):$(id -g) --workdir /app 2017phpworlddddworkshop_php-fpm
 
 beer: down build up install clean-database run-migrations
 
