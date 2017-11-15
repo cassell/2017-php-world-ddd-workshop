@@ -4,6 +4,7 @@ namespace Beeriously\Tests\Integration\Application\Repository;
 
 use Beeriously\Application\Repository\DoctrineGrainRepository;
 use Beeriously\Domain\Ingredients\Grains\Grain;
+use Beeriously\Domain\Ingredients\Grains\MinimumDiastaticPowerSpecification;
 use Beeriously\Tests\Integration\ContainerAwareTestCase;
 
 class DoctrineGrainRepositoryTest extends ContainerAwareTestCase
@@ -18,7 +19,12 @@ class DoctrineGrainRepositoryTest extends ContainerAwareTestCase
         $this->assertEquals("140 °L", (string) $grain->getDegreesLintner());
         $this->assertTrue($grain->getDegreesLintner()->hasEnoughDiastaticPowerToConvert());
 
+    }
 
+    public function testGetAutomaticallyConvertingGrain()
+    {
+        $repo = $this->getRepo();
+        $this->assertCount(4,$repo->findAutomaticallyConvertingGrain(new MinimumDiastaticPowerSpecification()));
     }
 
     private function getRepo(): DoctrineGrainRepository
@@ -27,3 +33,5 @@ class DoctrineGrainRepositoryTest extends ContainerAwareTestCase
     }
 
 }
+
+
